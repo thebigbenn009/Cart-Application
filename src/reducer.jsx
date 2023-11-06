@@ -56,6 +56,14 @@ const reducer = (state, action) => {
         cartTotal: state.cartTotal - 1,
         totalPriceInCart: calculateTotals(newItems),
       };
+    case "FETCH_DATA":
+      return {
+        ...state,
+        cart: action.payload,
+        loading: true,
+        cartTotal: state.cart.length,
+        totalPriceInCart: calculateTotals(action.payload),
+      };
 
     default:
       return state;
